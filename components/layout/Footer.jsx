@@ -112,35 +112,19 @@ export default async function Footer({ locale }) {
   };
 
   const FooterLink = ({ label, href }) => (
-    <Button
-      variant="link"
-      asChild
-      className="h-auto p-0 text-background/50 hover:text-background hover:no-underline gap-1 group"
+    <Link
+      href={href}
+      className="text-sm text-white/75 hover:text-white hover:underline underline-offset-4"
     >
-      <Link href={href}>
-        {label}
-        <ArrowUpRight
-          className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
-          aria-hidden="true"
-        />
-      </Link>
-    </Button>
+      {label}
+    </Link>
   );
 
   return (
     <footer
       id="contact"
-      className="relative bg-foreground text-background overflow-hidden"
+      className="relative bg-brand text-white overflow-hidden dark:bg-card dark:border-t dark:border-border"
     >
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, white 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-        aria-hidden="true"
-      />
 
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 py-16">
@@ -199,7 +183,7 @@ export default async function Footer({ locale }) {
           {/* Company */}
           <FadeIn delay={0.1}>
             <nav aria-label="Company links">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-background/90">
+              <h3 className="text-base font-bold mb-4 text-white">
                 {t("company")}
               </h3>
               <div className="flex flex-col gap-3">
@@ -213,7 +197,7 @@ export default async function Footer({ locale }) {
           {/* Support */}
           <FadeIn delay={0.15}>
             <nav aria-label="Support links">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-background/90">
+              <h3 className="text-base font-bold mb-4 text-white">
                 {t("support")}
               </h3>
               <div className="flex flex-col gap-3">
@@ -227,7 +211,7 @@ export default async function Footer({ locale }) {
           {/* Routes */}
           <FadeIn delay={0.2}>
             <nav aria-label="Popular routes">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-background/90">
+              <h3 className="text-base font-bold mb-4 text-white">
                 {t("popularRoutes")}
               </h3>
               <div className="flex flex-col gap-3">
@@ -239,11 +223,11 @@ export default async function Footer({ locale }) {
           </FadeIn>
         </div>
 
-        <Separator className="bg-background/10" />
+        <Separator className="bg-white/20" />
 
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-background/40">
+          <p className="text-xs text-white/70">
             © {new Date().getFullYear()} Busly. {t("rights")}
           </p>
 
@@ -255,7 +239,7 @@ export default async function Footer({ locale }) {
                 variant="ghost"
                 size="icon"
                 asChild
-                className="w-9 h-9 rounded-lg bg-background/5 text-background/50 hover:bg-brand hover:text-brand-secondary transition-all"
+                className="w-9 h-9 rounded-full bg-white text-brand hover:bg-white/85"
               >
                 <a href={social.href} aria-label={social.label}>
                   <social.icon className="w-4 h-4" />
@@ -272,7 +256,7 @@ export default async function Footer({ locale }) {
             {["Visa", "Mastercard", "Fawry", "Cash"].map((m) => (
               <span
                 key={m}
-                className="px-2.5 py-1 rounded-md bg-background/5 text-[10px] font-semibold text-background/40 border border-background/10"
+                className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-semibold text-white/80"
               >
                 {m}
               </span>

@@ -10,8 +10,8 @@ export default async function LocaleLayout({ children, params }) {
   const messages = await getMessages();
   const direction = locale === "ar" ? "rtl" : "ltr";
 
-  // Get tenant slug from subdomain or default to 'go-bus' for now
-  const slug = "go-bus";
+  // Get tenant slug from subdomain or default to 's-bus' for now
+  const slug = "s-bus";
 
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>

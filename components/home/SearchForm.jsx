@@ -276,7 +276,7 @@ export default function SearchForm({ compact = false }) {
         {/* Search Button */}
         <Button
           type="submit"
-          className="gap-2 bg-brand-secondary text-brand hover:bg-brand-secondary/90 font-semibold px-6 shrink-0 transition-all active:scale-[0.98]"
+          className="w-full sm:w-auto min-h-12 sm:min-h-0 gap-2 bg-brand-secondary text-brand hover:bg-brand-secondary/90 font-semibold px-6 shrink-0 transition-all active:scale-[0.98]"
         >
           <Search className="w-4 h-4" aria-hidden="true" />
           {t("search")}
@@ -291,17 +291,17 @@ export default function SearchForm({ compact = false }) {
   return (
     <form
       onSubmit={handleSearch}
-      className="relative rounded-2xl bg-background/80 backdrop-blur-2xl border border-border/60 shadow-2xl shadow-black/10 dark:shadow-black/30 p-2"
+      className="relative rounded-xl bg-background border border-border shadow-lg p-3"
       role="search"
       aria-label="Search bus trips"
     >
-      <div className="flex flex-col md:flex-row items-stretch gap-2">
+      <div className="flex flex-col md:flex-row items-stretch gap-3">
         {/* From */}
         <Popover open={fromOpen} onOpenChange={setFromOpen}>
           <PopoverTrigger asChild>
             <button
               type="button"
-              className="flex-1 flex items-center gap-2 px-4 py-3.5 rounded-xl hover:bg-muted/50 transition-colors text-start"
+              className="flex-1 flex items-center gap-2 px-4 py-3 rounded-lg border border-border hover:border-brand/50 transition-colors text-start"
               aria-label={t("from")}
             >
               <MapPin
@@ -309,7 +309,7 @@ export default function SearchForm({ compact = false }) {
                 aria-hidden="true"
               />
               <div className="flex-1 min-w-0">
-                <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                <label className="text-xs text-muted-foreground">
                   {t("from")}
                 </label>
                 <div
@@ -375,7 +375,7 @@ export default function SearchForm({ compact = false }) {
           variant="ghost"
           size="icon"
           onClick={swapCities}
-          className="hidden md:flex self-center w-10 h-10 rounded-xl bg-brand/8 text-brand hover:bg-brand/15 transition-all duration-300 shrink-0"
+          className="hidden md:flex self-center w-9 h-9 rounded-full border border-border text-brand hover:bg-muted shrink-0"
           aria-label="Swap cities"
         >
           <ArrowRightLeft className="w-4 h-4" />
@@ -386,7 +386,7 @@ export default function SearchForm({ compact = false }) {
           <PopoverTrigger asChild>
             <button
               type="button"
-              className="flex-1 flex items-center gap-2 px-4 py-3.5 rounded-xl hover:bg-muted/50 transition-colors text-start"
+              className="flex-1 flex items-center gap-2 px-4 py-3 rounded-lg border border-border hover:border-brand/50 transition-colors text-start"
               aria-label={t("to")}
             >
               <MapPin
@@ -394,7 +394,7 @@ export default function SearchForm({ compact = false }) {
                 aria-hidden="true"
               />
               <div className="flex-1 min-w-0">
-                <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                <label className="text-xs text-muted-foreground">
                   {t("to")}
                 </label>
                 <div
@@ -459,7 +459,7 @@ export default function SearchForm({ compact = false }) {
           <PopoverTrigger asChild>
             <button
               type="button"
-              className="flex-1 md:flex-none md:min-w-[180px] flex items-center gap-2 px-4 py-3.5 rounded-xl hover:bg-muted/50 transition-colors text-start"
+              className="flex-1 md:flex-none md:min-w-[180px] flex items-center gap-2 px-4 py-3 rounded-lg border border-border hover:border-brand/50 transition-colors text-start"
               aria-label={t("date")}
             >
               <CalendarDays
@@ -467,7 +467,7 @@ export default function SearchForm({ compact = false }) {
                 aria-hidden="true"
               />
               <div className="flex-1 min-w-0">
-                <label className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                <label className="text-xs text-muted-foreground">
                   {t("date")}
                 </label>
                 <div
@@ -506,7 +506,7 @@ export default function SearchForm({ compact = false }) {
         <Button
           type="submit"
           size="lg"
-          className="flex-1 md:flex-none gap-2.5 px-8 bg-brand text-brand-secondary hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/25 active:scale-[0.98] transition-all shrink-0 font-semibold"
+          className="w-full md:w-auto h-12 md:h-auto md:self-stretch gap-2.5 px-6 lg:px-10 rounded-lg bg-brand text-brand-secondary hover:bg-brand/90 shrink-0 font-semibold text-base"
         >
           <Search className="w-4 h-4" aria-hidden="true" />
           {t("search")}

@@ -5,10 +5,10 @@ import Footer from "@/components/layout/Footer";
 export default async function MainLayout({ children, params }) {
   const { locale } = await params;
   return (
-    <>
+    <div className="min-h-svh flex flex-col">
       <Navbar />
-      {children}
+      <div className="flex-1 flex flex-col">{children}</div>
       {/* <Footer locale={locale} /> */}
-    </>
+    </div>
   );
 }

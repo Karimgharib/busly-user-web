@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import SignUpForm from "./SignUpForm";
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "signup" });
   return {
     title: locale === "ar" ? "إنشاء حساب | Busly" : "Create Account | Busly",

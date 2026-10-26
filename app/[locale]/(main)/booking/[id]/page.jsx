@@ -7,7 +7,8 @@ import { BookingProvider } from "@/components/booking/BookingContext";
 import AuthGuard from "@/components/booking/AuthGuard";
 import { Bus } from "lucide-react";
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "booking" });
   return {
     title: `${t("selectSeat")} | Busly`,
@@ -20,7 +21,7 @@ export default async function BookingPage({ params }) {
   const { locale } = await params;
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="flex-1 bg-background">
       <div className="max-w-6xl mx-auto px-4 py-8">
         <Suspense
           fallback={

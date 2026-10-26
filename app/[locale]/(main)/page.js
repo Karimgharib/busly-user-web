@@ -7,7 +7,8 @@ import StatsSection from "@/components/home/StatsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import AppDownload from "@/components/home/AppDownload";
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
   return {
     title: {
@@ -63,12 +64,13 @@ function JsonLd({ locale }) {
   );
 }
 
-export default function HomePage({ params: { locale } }) {
+export default async function HomePage({ params }) {
+  const { locale } = await params;
   return (
     <>
       <JsonLd locale={locale} />
-      <main>
-        <HeroSection />
+      <main className="flex-1 flex flex-col">
+        <HeroSection locale={locale} />
         {/* <PopularRoutes locale={locale} /> */}
         {/* <FeaturesSection /> */}
         {/* <StatsSection /> */}

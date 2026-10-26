@@ -3,7 +3,8 @@ import { getTranslations } from "next-intl/server";
 import PaymentContent from "./PaymentContent";
 import AuthGuard from "@/components/booking/AuthGuard";
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "payment" });
   return { title: t("pageTitle") };
 }

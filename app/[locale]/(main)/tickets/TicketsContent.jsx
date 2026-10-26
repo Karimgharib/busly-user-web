@@ -61,7 +61,7 @@ export default function TicketsContent() {
     return (
       <div className="space-y-4">
         {[1, 2].map((i) => (
-          <div key={i} className="h-48 bg-muted rounded-2xl animate-pulse" />
+          <div key={i} className="h-36 bg-muted rounded-lg animate-pulse" />
         ))}
       </div>
     );
@@ -102,27 +102,23 @@ export default function TicketsContent() {
 
   return (
     <div>
-      <FadeIn>
-        <h1 className="text-2xl font-extrabold mb-6">{t("title")}</h1>
-      </FadeIn>
       <Stagger className="space-y-4">
         {bookings.map((booking) => {
           const s = booking.schedules;
           const status = statusConfig[booking.status] || statusConfig.pending;
           return (
             <StaggerItem key={booking.id}>
-              <Card className="overflow-hidden border-border/50 hover:border-border transition-colors">
-                <div className="h-1 bg-brand" />
-                <CardContent className="p-5">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex-1 space-y-3">
+              <Card className="overflow-hidden rounded-lg border-border shadow-sm py-0 gap-0">
+                <CardContent className="p-0">
+                  <div className="flex flex-col sm:flex-row">
+                    <div className="flex-1 p-5 space-y-3">
                       <div className="flex items-center gap-3">
-                        <MapPin className="w-4 h-4 text-brand shrink-0" />
-                        <span className="font-bold">
+                        <MapPin className="w-4 h-4 text-brand dark:text-foreground shrink-0" />
+                        <span className="text-lg font-bold">
                           {s?.routes?.from_city} → {s?.routes?.to_city}
                         </span>
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1.5">
                           <Clock className="w-3.5 h-3.5" />
                           {formatTime(s?.departure_time)} —{" "}
@@ -130,7 +126,7 @@ export default function TicketsContent() {
                         </span>
                         <span>{formatDate(s?.departure_time)}</span>
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1.5">
                           <BusIcon className="w-3.5 h-3.5" />
                           {s?.buses?.name}
@@ -141,15 +137,15 @@ export default function TicketsContent() {
                         </span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end gap-2 shrink-0">
-                      <span className="text-xl font-extrabold text-brand">
+                    <div className="border-t sm:border-t-0 sm:border-s border-dashed border-border bg-muted/30 sm:w-52 flex sm:flex-col items-center justify-between sm:justify-center gap-3 p-5">
+                      <span className="text-2xl font-bold">
                         {Number(booking.total_price).toLocaleString()}{" "}
                         {tBooking("egp")}
                       </span>
                       <Badge
                         variant="outline"
                         className={cn(
-                          "text-xs font-medium border",
+                          "text-xs font-medium border rounded",
                           status.className,
                         )}
                       >

@@ -41,7 +41,7 @@ export default function SearchResults() {
     return (
       <div className="space-y-5" aria-label="Loading search results">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="h-40 bg-muted rounded-2xl animate-pulse" />
+          <div key={i} className="h-36 bg-muted rounded-lg animate-pulse" />
         ))}
       </div>
     );
@@ -56,7 +56,7 @@ export default function SearchResults() {
         className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
       >
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">
+          <h1 className="text-2xl font-bold">
             {from} → {to}
           </h1>
           {date && (
@@ -76,7 +76,7 @@ export default function SearchResults() {
         </div>
         <Badge
           variant="secondary"
-          className="bg-muted/60 text-muted-foreground font-medium px-3 py-1.5 rounded-full"
+          className="bg-card border border-border text-foreground font-medium px-3 py-1 rounded"
         >
           {schedules.length} {t("found")}
         </Badge>

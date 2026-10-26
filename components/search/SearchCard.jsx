@@ -45,7 +45,7 @@ export default function SearchCard({ schedule }) {
   }
 
   return (
-    <Card className="route-card group border-border/50 hover:border-brand/20 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 bg-card overflow-hidden">
+    <Card className="border-border bg-card rounded-lg shadow-sm hover:shadow-md hover:border-brand/40 transition-shadow overflow-hidden py-0 gap-0">
       <CardContent className="p-0">
         <div className="flex flex-col lg:flex-row">
           {/* Left */}
@@ -53,7 +53,7 @@ export default function SearchCard({ schedule }) {
             <div className="flex items-center gap-2 mb-4">
               <Badge
                 variant="outline"
-                className="font-semibold text-xs uppercase"
+                className="font-semibold text-xs uppercase rounded border-brand/40 text-brand dark:text-foreground"
               >
                 {schedule.buses?.bus_type || "Standard"}
               </Badge>
@@ -105,7 +105,7 @@ export default function SearchCard({ schedule }) {
                   return Icon ? (
                     <div
                       key={amenity}
-                      className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground"
+                      className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground"
                       title={amenity}
                     >
                       <Icon className="w-4 h-4" aria-hidden="true" />
@@ -116,15 +116,13 @@ export default function SearchCard({ schedule }) {
             )}
           </div>
 
-          <Separator
-            orientation="vertical"
-            className="hidden lg:block h-auto"
-          />
+          <div className="hidden lg:block self-stretch border-s border-dashed border-border" />
+
 
           {/* Right */}
-          <div className="lg:w-56 flex lg:flex-col items-center justify-between lg:justify-center gap-4 p-5 lg:px-6">
+          <div className="lg:w-60 flex lg:flex-col items-center justify-between lg:justify-center gap-4 p-5 lg:px-6 bg-muted/30">
             <div className="text-center">
-              <div className="text-3xl font-extrabold text-brand">
+              <div className="text-3xl font-bold text-brand dark:text-foreground">
                 {Number(schedule.price).toLocaleString()} EGP
               </div>
               <div className="text-xs text-muted-foreground">
@@ -139,7 +137,7 @@ export default function SearchCard({ schedule }) {
               </Badge>
             </div>
             <Button
-              className="w-full gap-2 bg-brand text-brand-secondary hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/25 active:scale-[0.98] transition-all font-semibold"
+              className="w-full gap-2 bg-brand text-brand-secondary hover:bg-brand/90 font-semibold"
               asChild
             >
               <Link href={`/${locale}/booking/${schedule.id}`}>

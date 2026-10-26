@@ -113,12 +113,7 @@ export default function Navbar() {
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/50"
-            : "bg-background border-b border-transparent",
-        )}
+        className="sticky top-0 z-50 bg-background border-b border-border"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -130,26 +125,9 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group"
               aria-label="Busly home"
             >
-              <div className="relative">
-                <div className="w-10 h-10 bg-brand rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                  <Bus
-                    className="w-5 h-5 text-brand-secondary"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div
-                  className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-background"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold leading-tight tracking-tight">
-                  Busly
-                </span>
-                <span className="text-[10px] text-muted-foreground leading-none font-medium">
-                  {t("tagline")}
-                </span>
-              </div>
+              <span className="text-xl font-bold text-brand dark:text-foreground">
+                Busly
+              </span>
             </Link>
 
             {/* Desktop links */}
@@ -161,10 +139,10 @@ export default function Navbar() {
                   size="sm"
                   asChild
                   className={cn(
-                    "font-medium",
+                    "font-medium rounded-none h-16 border-0 border-b-2 focus-visible:ring-0 focus-visible:border-b-2",
                     pathname === link.href
-                      ? "text-brand bg-brand/8 hover:text-brand hover:bg-brand/12"
-                      : "text-muted-foreground hover:text-foreground",
+                      ? "text-brand dark:text-white dark:border-white border-brand hover:bg-transparent hover:text-brand"
+                      : "text-foreground/70 border-transparent hover:bg-transparent hover:text-brand",
                   )}
                 >
                   <Link href={link.href}>{link.label}</Link>
@@ -267,7 +245,7 @@ export default function Navbar() {
                     <Button
                       size="sm"
                       asChild
-                      className="gap-2 bg-brand text-brand-secondary hover:bg-brand/90 hover:shadow-lg hover:shadow-brand/25 transition-shadow"
+                      className="gap-2 bg-brand text-brand-secondary hover:bg-brand/90"
                     >
                       <Link href={`/${locale}/login`}>
                         <User className="w-4 h-4" />

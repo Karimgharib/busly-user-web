@@ -4,10 +4,12 @@ import { getTranslations } from "next-intl/server";
 import SearchResults from "@/components/search/SearchResults";
 import SearchForm from "@/components/home/SearchForm";
 
-export async function generateMetadata({ params: { locale }, searchParams }) {
+export async function generateMetadata({ params, searchParams }) {
+  const { locale } = await params;
+  const resolvedSearch = await searchParams;
   const t = await getTranslations({ locale, namespace: "searchResults" });
-  const from = searchParams.from || "";
-  const to = searchParams.to || "";
+  const from = resolvedSearch.from || "";
+  const to = resolvedSearch.to || "";
 
   return {
     title: `${from} → ${to} | Busly`,
@@ -17,27 +19,23 @@ export async function generateMetadata({ params: { locale }, searchParams }) {
 
 export default function SearchPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="flex-1 bg-muted/30">
       {/* Compact Search Header */}
-      <div className="relative bg-brand py-8 overflow-hidden">
-        <div
-          className="absolute inset-0 dot-pattern opacity-10"
-          aria-hidden="true"
-        />
-        <div className="relative max-w-4xl mx-auto px-4">
+      <div className="bg-brand dark:bg-card dark:border-b dark:border-border py-6">
+        <div className="max-w-5xl mx-auto px-4">
           <SearchForm compact />
         </div>
       </div>
 
       {/* Results Area */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-8">
         <Suspense
           fallback={
-            <div className="space-y-5" aria-label="Loading search results">
+            <div className="space-y-4" aria-label="Loading search results">
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="h-40 bg-muted rounded-2xl animate-pulse"
+                  className="h-36 bg-muted rounded-lg animate-pulse"
                 />
               ))}
             </div>
